@@ -42,7 +42,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/question2_question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Question2"
@@ -50,6 +50,7 @@
                     android:textSize="40sp" />
 
                 <TextView
+                    android:id="@+id/question2_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="가격대를 선택해주세요.\n촤범 위도 설정할 수 있슴니다."
@@ -68,6 +69,7 @@
         android:weightSum="7">
 
         <TextView
+            android:id="@+id/question2_rangeText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
@@ -86,6 +88,7 @@
             android:weightSum="9.5">
 
             <TextView
+                android:id="@+id/question2_minText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -112,6 +115,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/question2_won1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -129,6 +133,7 @@
             android:weightSum="9.5">
 
             <TextView
+                android:id="@+id/question2_maxText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -155,6 +160,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/question2_won2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -175,6 +181,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/question2_errorText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
@@ -193,6 +200,7 @@
             android:weightSum="9.5">
 
             <TextView
+                android:id="@+id/question2_plusminus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -219,6 +227,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/question2_won3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"

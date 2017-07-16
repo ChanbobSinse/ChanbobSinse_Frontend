@@ -1,5 +1,6 @@
 package com.oechyeochangmen.chanbapsinse.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.R;
 
 import java.util.Timer;
@@ -25,6 +28,9 @@ public class StartActivity extends AppCompatActivity {
     Space topSpace;
     Space bottomSpace;
     Button start_btn;
+    TextView title;
+    TextView content;
+    TextView copyright;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +40,9 @@ public class StartActivity extends AppCompatActivity {
         topSpace = (Space) findViewById(R.id.activity_start_topSpace);
         bottomSpace = (Space) findViewById(R.id.activity_start_bottomSpace);
         start_btn = (Button) findViewById(R.id.activity_start_btn);
+        title = (TextView) findViewById(R.id.activity_start_title);
+        content = (TextView) findViewById(R.id.activity_start_content);
+        copyright = (TextView) findViewById(R.id.activity_start_copyright);
 
         final Handler handler = new Handler();
         final Timer timer = new Timer();
@@ -46,7 +55,7 @@ public class StartActivity extends AppCompatActivity {
                     start_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(StartActivity.this,Question1Activity.class);
+                            Intent intent = new Intent(StartActivity.this, Question1Activity.class);
                             startActivity(intent);
                             finish();
                         }
@@ -71,8 +80,11 @@ public class StartActivity extends AppCompatActivity {
                 });
             }
         }, 500, Term);
-
-
+        Fonts fonts = new Fonts(StartActivity.this);
+        title.setTypeface(fonts.tfRegular);
+        content.setTypeface(fonts.tfLight);
+        copyright.setTypeface(fonts.tfRegular);
+        start_btn.setTypeface(fonts.tfRegular);
     }
 
 }

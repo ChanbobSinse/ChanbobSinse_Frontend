@@ -41,7 +41,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/question1_question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Question1"
@@ -49,6 +49,7 @@
                     android:textSize="40sp" />
 
                 <TextView
+                    android:id="@+id/question1_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="자신의 취향에 맞는 카테고리를 선택해주세요.\n중복 선택 가능합니다."
