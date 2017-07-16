@@ -1,7 +1,7 @@
 package com.oechyeochangmen.chanbapsinse.Activity;
 
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.R;
 
 import java.util.Timer;
@@ -80,11 +79,14 @@ public class StartActivity extends AppCompatActivity {
                 });
             }
         }, 500, Term);
-        Fonts fonts = new Fonts(StartActivity.this);
-        title.setTypeface(fonts.tfRegular);
-        content.setTypeface(fonts.tfLight);
-        copyright.setTypeface(fonts.tfRegular);
-        start_btn.setTypeface(fonts.tfRegular);
+        Typeface tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothic.ttf");
+        Typeface tfBold = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicBold.ttf");
+        Typeface tfLight = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicLight.ttf");
+
+        title.setTypeface(tfRegular);
+        content.setTypeface(tfLight);
+        copyright.setTypeface(tfRegular);
+        start_btn.setTypeface(tfRegular);
     }
 
 }

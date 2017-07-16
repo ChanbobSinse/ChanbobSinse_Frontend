@@ -1,6 +1,7 @@
 package com.oechyeochangmen.chanbapsinse.Activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.R;
 
 import java.text.DecimalFormat;
@@ -156,27 +156,28 @@ public class Question2Activity extends AppCompatActivity {
 
             }
         });
-        Fonts fonts = new Fonts(this);
-        question.setTypeface(fonts.tfBold);
-        content.setTypeface(fonts.tfRegular);
-        won1.setTypeface(fonts.tfRegular);
-        won2.setTypeface(fonts.tfRegular);
-        won3.setTypeface(fonts.tfRegular);
-        plusminus.setTypeface(fonts.tfRegular);
-        prev_btn.setTypeface(fonts.tfRegular);
-        next_btn.setTypeface(fonts.tfRegular);
-        minText.setTypeface(fonts.tfRegular);
-        maxText.setTypeface(fonts.tfRegular);
-        minMoney.setTypeface(fonts.tfRegular);
-        maxMoney.setTypeface(fonts.tfRegular);
-        errorText.setTypeface(fonts.tfRegular);
-        errorMoney.setTypeface(fonts.tfRegular);
+        Typeface tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothic.ttf");
+        Typeface tfBold = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicBold.ttf");
+        Typeface tfLight = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicLight.ttf");
 
+        question.setTypeface(tfBold);
+        content.setTypeface(tfRegular);
+        won1.setTypeface(tfRegular);
+        won2.setTypeface(tfRegular);
+        won3.setTypeface(tfRegular);
+        plusminus.setTypeface(tfRegular);
+        prev_btn.setTypeface(tfRegular);
+        next_btn.setTypeface(tfRegular);
+        minText.setTypeface(tfRegular);
+        maxText.setTypeface(tfRegular);
+        minMoney.setTypeface(tfRegular);
+        maxMoney.setTypeface(tfRegular);
+        errorText.setTypeface(tfRegular);
+        errorMoney.setTypeface(tfRegular);
     }
 
 
     private String numberToMoney(String money) {
-        Log.e("Asdf", money.toString());
         money = money.replaceAll(",", "");
         DecimalFormat format = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         DecimalFormatSymbols symbols = format.getDecimalFormatSymbols();

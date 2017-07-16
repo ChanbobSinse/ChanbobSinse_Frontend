@@ -2,72 +2,70 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="130dp"
     android:layout_weight="10"
     android:orientation="horizontal">
 
     <android.support.v4.widget.Space
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5" />
+        android:layout_width="@dimen/blank_margin"
+        android:layout_height="match_parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/category_img"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/blank_margin"
         android:src="@drawable/bg_gradient" />
-
-    <android.support.v4.widget.Space
-        android:layout_width="0dp"
-
-        android:layout_height="match_parent"
-        android:layout_weight="0.3" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="7"
         android:gravity="center"
-        android:orientation="vertical"
-        android:weightSum="3">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp">
 
             <TextView
+                android:id="@+id/category_korTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:text="한식"
                 android:textColor="#222"
-                android:textSize="35sp" />
+                android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/category_engTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
+                android:layout_gravity="bottom|start"
+                android:layout_marginStart="7dp"
                 android:text="KoreanFood"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/category_content"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="오늘따라 집밥이 그리울 때,\n밖에서 먹는 우리집의 맛"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
-    <android.support.v4.widget.Space
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5" />
-
     <CheckBox
+        android:id="@+id/category_checkbox"
         android:layout_width="30dp"
-        android:layout_height="80dp"
+        android:layout_height="75dp"
         android:layout_gravity="center"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:button="@drawable/btn_category"
-        android:scaleX="0.5"
-        android:scaleY="0.5" />
+        android:scaleX="0.3"
+        android:scaleY="0.3" />
 </LinearLayout>
