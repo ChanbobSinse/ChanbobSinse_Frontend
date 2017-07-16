@@ -6,14 +6,56 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context="com.oechyeochangmen.chanbapsinse.Question1Activity">
+    tools:context="com.oechyeochangmen.chanbapsinse.Activity.Question1Activity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        app:cardElevation="2dp">
+        android:layout_weight="2">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="10">
+
+            <android.support.v4.widget.Space
+                android:layout_width="@dimen/blank_margin"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/ic_question_icon" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Question1"
+                    android:textColor="#222222"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="자신의 취향에 맞는 카테고리를 선택해주세요.\n중복 선택 가능합니다."
+                    android:textColor="#222222"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
@@ -26,16 +68,28 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorBase">
+        android:background="@color/colorBase"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <Space
+            android:layout_width="@dimen/blank_margin"
+            android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/question1_btn_next"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="10"
             android:background="@drawable/btn_transparent"
             android:text="다음"
             android:textColor="#ffffff"
             android:textSize="20sp" />
+
+        <Space
+            android:layout_width="@dimen/blank_margin"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </LinearLayout>
