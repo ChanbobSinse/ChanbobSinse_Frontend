@@ -15,10 +15,10 @@
         android:src="@drawable/ic_splash_icon" />
 
     <TextView
-        android:layout_marginTop="30dp"
         android:id="@+id/searching_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="당신에게 맞는 음식점을\n 검색중입니다..."
         android:textSize="18sp" />

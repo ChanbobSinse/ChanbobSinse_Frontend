@@ -64,9 +64,7 @@ public class Question2Activity extends AppCompatActivity {
         prev_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Question2Activity.this, Question1Activity.class);
-                intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
@@ -208,5 +206,14 @@ public class Question2Activity extends AppCompatActivity {
 
     private void changeRangeMoney() {
         rangeMoney.setText(minMoney.getText() + " ₩ ~ " + maxMoney.getText() + " ₩");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Question2Activity.this, Question1Activity.class);
+        intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
+
     }
 }
