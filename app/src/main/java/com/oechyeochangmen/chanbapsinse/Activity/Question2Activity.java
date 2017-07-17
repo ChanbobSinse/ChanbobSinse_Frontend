@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.oechyeochangmen.chanbapsinse.R;
 
@@ -19,6 +20,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import static android.content.Intent.FLAG_ACTIVITY_NO_HISTORY;
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class Question2Activity extends AppCompatActivity {
@@ -64,6 +66,23 @@ public class Question2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Question2Activity.this, Question1Activity.class);
                 intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+            }
+        });
+
+        next_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String min, max;
+
+                min = minMoney.getText().toString().replaceAll(",", "");
+                max = maxMoney.getText().toString().replaceAll(",", "");
+                if (Long.parseLong(min) > Long.parseLong(max)) {
+                    Toast.makeText(Question2Activity.this, "최솟값이 최댓값보다 큽니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent intent = new Intent(Question2Activity.this, SearchingActivity.class);
+                intent.addFlags(FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
         });

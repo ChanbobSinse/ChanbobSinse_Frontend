@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.oechyeochangmen.chanbapsinse.Activity.SearchingActivity">
+
+    <ImageView
+        android:id="@+id/searching_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_splash_icon" />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/searching_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="당신에게 맞는 음식점을\n 검색중입니다..."
+        android:textSize="18sp" />
+</LinearLayout>

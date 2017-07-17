@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.oechyeochangmen.chanbapsinse.Adapter.CategoryRecyclerViewAdpater;
 import com.oechyeochangmen.chanbapsinse.Model.Category;
@@ -48,9 +49,21 @@ public class Question1Activity extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean isChecked=false;
+                for(Category item : items){
+                    if(item.isChecked()){
+                        isChecked=true;
+                        break;
+                    }
+                }
+                if(!isChecked){
+                    Toast.makeText(Question1Activity.this, "1개 이상 체크 해야합니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent intent = new Intent(Question1Activity.this, Question2Activity.class);
                 intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
+                isChecked=false;
 
             }
         });

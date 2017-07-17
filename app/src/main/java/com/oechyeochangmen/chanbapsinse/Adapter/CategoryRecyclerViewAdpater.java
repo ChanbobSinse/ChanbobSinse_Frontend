@@ -38,7 +38,7 @@ public class CategoryRecyclerViewAdpater extends RecyclerView.Adapter<CategoryRe
     }
 
     @Override
-    public void onBindViewHolder(CategoryRecyclerViewAdpater.ViewHolder holder, int position) {
+    public void onBindViewHolder(final CategoryRecyclerViewAdpater.ViewHolder holder, final int position) {
 
         Typeface tfRegular = Typeface.createFromAsset(context.getAssets(), "fonts/NanumBarunGothic.ttf");
         Typeface tfLight = Typeface.createFromAsset(context.getAssets(), "fonts/NanumBarunGothicLight.ttf");
@@ -51,6 +51,18 @@ public class CategoryRecyclerViewAdpater extends RecyclerView.Adapter<CategoryRe
         holder.engTitle.setText(items.get(position).getEngTitle());
         holder.content.setText(items.get(position).getContent());
         holder.checkBox.setChecked(items.get(position).isChecked());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (items.get(position).isChecked()) {
+                    holder.checkBox.setChecked(false);
+                    items.get(position).setChecked(false);
+                } else {
+                    holder.checkBox.setChecked(true);
+                    items.get(position).setChecked(true);
+                }
+            }
+        });
     }
 
     @Override

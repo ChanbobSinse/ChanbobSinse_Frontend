@@ -243,7 +243,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorBase"
+        android:background="@color/colorBaseBlue"
         android:weightSum="2">
 
 
@@ -273,7 +273,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_fill"
             android:text="다음"
-            android:textColor="@color/colorBase"
+            android:textColor="@color/colorBaseBlue"
             android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

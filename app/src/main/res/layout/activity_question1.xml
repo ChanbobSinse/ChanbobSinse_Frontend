@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorBase"
+        android:background="@color/colorBaseBlue"
         android:orientation="horizontal"
         android:weightSum="10">
 
