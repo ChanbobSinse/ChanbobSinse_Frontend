@@ -26,7 +26,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1.8"
                 android:src="@drawable/ic_question_icon" />
 
             <android.support.v4.widget.Space
@@ -80,121 +80,108 @@
             android:textColor="#222"
             android:textSize="19sp" />
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3">
+            android:layout_weight="0.9"
+            android:background="#fff"
+            android:paddingStart="@dimen/blank_margin"
+            android:weightSum="9.5">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/question2_minText"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="3">
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="최소 비용"
+                android:textColor="#222"
+                android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="#fff"
-                    android:paddingStart="@dimen/blank_margin"
-                    android:weightSum="9.5">
+            <android.support.v4.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
 
-                    <TextView
-                        android:id="@+id/question2_minText"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:gravity="center_vertical"
-                        android:text="최소 비용"
-                        android:textColor="#222"
-                        android:textSize="16sp" />
+            <EditText
+                android:id="@+id/question2_minmoney"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="4"
+                android:gravity="center_vertical|right"
+                android:inputType="number"
+                android:maxLength="14"
+                android:text="0"
+                android:textSize="16sp" />
 
-                    <android.support.v4.widget.Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5" />
+            <TextView
+                android:id="@+id/question2_won1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:text="₩"
+                android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/question2_minmoney"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_weight="4"
-                        android:gravity="center_vertical|right"
-                        android:inputType="number"
-                        android:maxLength="14"
-                        android:text="0"
-                        android:textSize="16sp" />
+        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/question2_won1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:text="₩"
-                        android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:background="#fff"
+            android:paddingStart="@dimen/blank_margin"
+            android:weightSum="9.5">
 
-                </LinearLayout>
+            <TextView
+                android:id="@+id/question2_maxText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="최대 비용"
+                android:textColor="#222"
+                android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="#fff"
-                    android:paddingStart="@dimen/blank_margin"
-                    android:weightSum="9.5">
+            <android.support.v4.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
 
-                    <TextView
-                        android:id="@+id/question2_maxText"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:gravity="center_vertical"
-                        android:text="최대 비용"
-                        android:textColor="#222"
-                        android:textSize="16sp" />
+            <EditText
+                android:id="@+id/question2_maxmoney"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="4"
+                android:gravity="center_vertical|end"
+                android:inputType="number"
+                android:maxLength="14"
+                android:text="0"
+                android:textSize="16sp" />
 
-                    <android.support.v4.widget.Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5" />
+            <TextView
+                android:id="@+id/question2_won2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:text="₩"
+                android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/question2_maxmoney"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_weight="4"
-                        android:gravity="center_vertical|end"
-                        android:inputType="number"
-                        android:maxLength="14"
-                        android:text="0"
-                        android:textSize="16sp" />
+        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/question2_won2"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:text="₩"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/question2_rangemoney"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="#fff"
-                    android:gravity="center"
-                    android:text="0 ₩ ~ 0 ₩"
-                    android:textColor="#4473ec"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/question2_rangemoney"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:background="#fff"
+            android:gravity="center"
+            android:text="0 ₩ ~ 0 ₩"
+            android:textColor="#4473ec"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/question2_errorText"
@@ -208,55 +195,51 @@
             android:textColor="#222"
             android:textSize="19sp" />
 
-        <android.support.v7.widget.CardView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.8">
+            android:layout_weight="0.9"
+            android:background="#fff"
+            android:paddingLeft="@dimen/blank_margin"
+            android:weightSum="9.5">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/question2_plusminus"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="#fff"
-                android:paddingLeft="@dimen/blank_margin"
-                android:weightSum="9.5">
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="±"
+                android:textColor="#222"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/question2_plusminus"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:gravity="center_vertical"
-                    android:text="±"
-                    android:textColor="#222"
-                    android:textSize="20sp" />
+            <android.support.v4.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
 
-                <android.support.v4.widget.Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5" />
+            <EditText
+                android:id="@+id/question2_errormoney"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="4"
+                android:gravity="center_vertical|right"
+                android:inputType="number"
+                android:maxLength="14"
+                android:text="0"
+                android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/question2_errormoney"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="4"
-                    android:gravity="center_vertical|right"
-                    android:inputType="number"
-                    android:maxLength="14"
-                    android:text="0"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/question2_won3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:gravity="center_vertical"
-                    android:text="₩"
-                    android:textSize="16sp" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/question2_won3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:text="₩"
+                android:textSize="16sp" />
+        </LinearLayout>
     </LinearLayout>
 
 
@@ -277,7 +260,7 @@
             android:layout_marginRight="@dimen/blank_margin"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:background="@drawable/btn_transparent"
+            android:background="@drawable/btn_transparent_white"
             android:text="이전"
             android:textColor="#ffffff"
             android:textSize="20sp" />

@@ -1,18 +1,18 @@
 package com.oechyeochangmen.chanbapsinse.Activity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.R;
 
 import java.text.DecimalFormat;
@@ -20,11 +20,15 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import static android.content.Intent.FLAG_ACTIVITY_NO_HISTORY;
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
 
 public class Question2Activity extends AppCompatActivity {
-    public static Question2Activity activity = null;
+
+    Fonts fonts;
+
+    SharedPreferences pref;
+    SharedPreferences.Editor pref_edit;
 
     EditText minMoney;
     EditText maxMoney;
@@ -43,7 +47,10 @@ public class Question2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question2);
 
-        activity = this;
+        fonts = new Fonts(this);
+
+        pref = getSharedPreferences("value", MODE_PRIVATE);
+        pref_edit = pref.edit();
 
         minMoney = (EditText) findViewById(R.id.question2_minmoney);
         maxMoney = (EditText) findViewById(R.id.question2_maxmoney);
@@ -64,6 +71,10 @@ public class Question2Activity extends AppCompatActivity {
         prev_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pref_edit.putLong("min", Long.parseLong(minMoney.getText().toString().replaceAll(",", "")));
+                pref_edit.putLong("max", Long.parseLong(maxMoney.getText().toString().replaceAll(",", "")));
+                pref_edit.putLong("error", Long.parseLong(errorMoney.getText().toString().replaceAll(",", "")));
+                pref_edit.apply();
                 onBackPressed();
             }
         });
@@ -79,8 +90,15 @@ public class Question2Activity extends AppCompatActivity {
                     Toast.makeText(Question2Activity.this, "최솟값이 최댓값보다 큽니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent = new Intent(Question2Activity.this, SearchingActivity.class);
-                intent.addFlags(FLAG_ACTIVITY_NO_HISTORY);
+
+                pref_edit.putLong("min", Long.parseLong(minMoney.getText().toString().replaceAll(",", "")));
+                pref_edit.putLong("max", Long.parseLong(maxMoney.getText().toString().replaceAll(",", "")));
+                pref_edit.putLong("error", Long.parseLong(errorMoney.getText().toString().replaceAll(",", "")));
+                pref_edit.apply();
+
+                Intent intent = new Intent(Question2Activity.this, RecommendActivity.class);
+                intent.addFlags(FLAG_ACTIVITY_SINGLE_TOP);
+                intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }
         });
@@ -173,26 +191,39 @@ public class Question2Activity extends AppCompatActivity {
 
             }
         });
-        Typeface tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothic.ttf");
-        Typeface tfBold = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicBold.ttf");
-        Typeface tfLight = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicLight.ttf");
 
-        question.setTypeface(tfBold);
-        content.setTypeface(tfRegular);
-        won1.setTypeface(tfRegular);
-        won2.setTypeface(tfRegular);
-        won3.setTypeface(tfRegular);
-        plusminus.setTypeface(tfRegular);
-        prev_btn.setTypeface(tfRegular);
-        next_btn.setTypeface(tfRegular);
-        minText.setTypeface(tfRegular);
-        maxText.setTypeface(tfRegular);
-        minMoney.setTypeface(tfRegular);
-        maxMoney.setTypeface(tfRegular);
-        errorText.setTypeface(tfRegular);
-        errorMoney.setTypeface(tfRegular);
+        Long min = pref.getLong("min", 0);
+        Long max = pref.getLong("max", 0);
+        Long error = pref.getLong("error", 0);
+        minMoney.setText("" + min);
+        maxMoney.setText("" + max);
+        errorMoney.setText("" + error);
+
+
+        question.setTypeface(fonts.tfBold);
+        content.setTypeface(fonts.tfRegular);
+        won1.setTypeface(fonts.tfRegular);
+        won2.setTypeface(fonts.tfRegular);
+        won3.setTypeface(fonts.tfRegular);
+        plusminus.setTypeface(fonts.tfRegular);
+        prev_btn.setTypeface(fonts.tfRegular);
+        next_btn.setTypeface(fonts.tfRegular);
+        minText.setTypeface(fonts.tfRegular);
+        maxText.setTypeface(fonts.tfRegular);
+        minMoney.setTypeface(fonts.tfRegular);
+        maxMoney.setTypeface(fonts.tfRegular);
+        errorText.setTypeface(fonts.tfRegular);
+        errorMoney.setTypeface(fonts.tfRegular);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Question2Activity.this, Question1Activity.class);
+        intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
+
+    }
 
     private String numberToMoney(String money) {
         money = money.replaceAll(",", "");
@@ -208,12 +239,5 @@ public class Question2Activity extends AppCompatActivity {
         rangeMoney.setText(minMoney.getText() + " ₩ ~ " + maxMoney.getText() + " ₩");
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(Question2Activity.this, Question1Activity.class);
-        intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intent);
 
-    }
 }

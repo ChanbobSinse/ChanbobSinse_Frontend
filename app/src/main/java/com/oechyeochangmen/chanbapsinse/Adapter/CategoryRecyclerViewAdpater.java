@@ -11,12 +11,14 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.Model.Category;
 import com.oechyeochangmen.chanbapsinse.R;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
 
 /**
  * Created by eka on 2017. 7. 17..
@@ -25,10 +27,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CategoryRecyclerViewAdpater extends RecyclerView.Adapter<CategoryRecyclerViewAdpater.ViewHolder> {
     Context context;
     ArrayList<Category> items = new ArrayList<>();
+    Fonts fonts;
 
     public CategoryRecyclerViewAdpater(Context context, ArrayList<Category> items) {
         this.context = context;
         this.items = items;
+        fonts = new Fonts(context);
     }
 
     @Override
@@ -40,11 +44,10 @@ public class CategoryRecyclerViewAdpater extends RecyclerView.Adapter<CategoryRe
     @Override
     public void onBindViewHolder(final CategoryRecyclerViewAdpater.ViewHolder holder, final int position) {
 
-        Typeface tfRegular = Typeface.createFromAsset(context.getAssets(), "fonts/NanumBarunGothic.ttf");
-        Typeface tfLight = Typeface.createFromAsset(context.getAssets(), "fonts/NanumBarunGothicLight.ttf");
-        holder.korTitle.setTypeface(tfRegular);
-        holder.engTitle.setTypeface(tfLight);
-        holder.content.setTypeface(tfLight);
+
+        holder.korTitle.setTypeface(fonts.tfRegular);
+        holder.engTitle.setTypeface(fonts.tfLight);
+        holder.content.setTypeface(fonts.tfLight);
 
         holder.imageView.setImageDrawable(items.get(position).getImg());
         holder.korTitle.setText(items.get(position).getKorTitle());

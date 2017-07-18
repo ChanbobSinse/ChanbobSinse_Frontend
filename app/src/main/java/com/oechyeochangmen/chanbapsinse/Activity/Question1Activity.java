@@ -1,18 +1,18 @@
 package com.oechyeochangmen.chanbapsinse.Activity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oechyeochangmen.chanbapsinse.Adapter.CategoryRecyclerViewAdpater;
+import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.Model.Category;
 import com.oechyeochangmen.chanbapsinse.R;
 
@@ -21,11 +21,17 @@ import java.util.ArrayList;
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class Question1Activity extends AppCompatActivity {
-    public static Question1Activity activity = null;
+
+    public static ArrayList<Category> items = new ArrayList<>();
+
+    SharedPreferences pref;
+    SharedPreferences.Editor pref_edit;
+
+    Fonts fonts;
+
     Button next_btn;
     TextView question;
     TextView content;
-    ArrayList<Category> items = new ArrayList<>();
     RecyclerView listView;
     CategoryRecyclerViewAdpater recyclerViewAdpater;
 
@@ -34,13 +40,15 @@ public class Question1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question1);
 
-        activity = this;
+        fonts = new Fonts(this);
+
+        pref = getSharedPreferences("value", MODE_PRIVATE);
+        pref_edit = pref.edit();
 
         next_btn = (Button) findViewById(R.id.question1_btn_next);
         question = (TextView) findViewById(R.id.question1_question);
         content = (TextView) findViewById(R.id.question1_content);
         listView = (RecyclerView) findViewById(R.id.question1_recyclerView);
-
         initItems();
         recyclerViewAdpater = new CategoryRecyclerViewAdpater(this, items);
         listView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -49,29 +57,31 @@ public class Question1Activity extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isChecked = false;
+                int count = 0;
                 for (Category item : items) {
                     if (item.isChecked()) {
-                        isChecked = true;
-                        break;
+                        count++;
                     }
                 }
-                if (!isChecked) {
+                if (count == 0) {
                     Toast.makeText(Question1Activity.this, "1개 이상 체크 해야합니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (count > 6) {
+                    Toast.makeText(Question1Activity.this, "카테고리 선택은 6개 까지만 가능 합니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Intent intent = new Intent(Question1Activity.this, Question2Activity.class);
                 intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-                isChecked = false;
+                count = 0;
 
             }
         });
-        Typeface tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothic.ttf");
-        Typeface tfBold = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicBold.ttf");
-        question.setTypeface(tfBold);
-        content.setTypeface(tfRegular);
-        next_btn.setTypeface(tfRegular);
+        question.setTypeface(fonts.tfBold);
+        content.setTypeface(fonts.tfRegular);
+        next_btn.setTypeface(fonts.tfRegular);
     }
 
     public void initItems() {
@@ -88,7 +98,7 @@ public class Question1Activity extends AppCompatActivity {
         items.add(new Category(getResources().getDrawable(R.drawable.category_pizza),
                 "피자", "Pizza", "영원한 치느님의 동무,\n쭈욱 늘어나는 치즈를 맘껏 먹고싶을 때"));
         items.add(new Category(getResources().getDrawable(R.drawable.category_bossam),
-                "보족", "Bossam /\nPork feet", "고기가 땡기니\n쌈 채소 섭취를 명분으로"));
+                "보쌈/족발", "Bossam /\nPork feet", "고기가 땡기니\n쌈 채소 섭취를 명분으로"));
         items.add(new Category(getResources().getDrawable(R.drawable.category_snackfood),
                 "분식", "Snack bar", "한식의 연장선,\n우리 모두의 친구"));
     }
@@ -96,8 +106,12 @@ public class Question1Activity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (Question2Activity.activity != null) {
-            Question2Activity.activity.finish();
-        }
+        finishAffinity();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        pref_edit.clear().apply();
     }
 }

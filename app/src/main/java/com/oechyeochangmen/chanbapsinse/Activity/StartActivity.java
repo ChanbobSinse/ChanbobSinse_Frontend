@@ -12,10 +12,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
 
 /**
  * Created by eka on 2017. 7. 14..
@@ -24,6 +29,7 @@ import java.util.TimerTask;
 public class StartActivity extends AppCompatActivity {
     private int Term = 10;
     private int count = 0;
+    Fonts fonts;
     Space topSpace;
     Space bottomSpace;
     Button start_btn;
@@ -35,6 +41,8 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        fonts = new Fonts(this);
 
         topSpace = (Space) findViewById(R.id.activity_start_topSpace);
         bottomSpace = (Space) findViewById(R.id.activity_start_bottomSpace);
@@ -55,6 +63,8 @@ public class StartActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(StartActivity.this, Question1Activity.class);
+                            intent.addFlags(FLAG_ACTIVITY_SINGLE_TOP);
+                            intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                             startActivity(intent);
                             finish();
                         }
@@ -79,14 +89,12 @@ public class StartActivity extends AppCompatActivity {
                 });
             }
         }, 500, Term);
-        Typeface tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothic.ttf");
-        Typeface tfBold = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicBold.ttf");
-        Typeface tfLight = Typeface.createFromAsset(getAssets(), "fonts/NanumBarunGothicLight.ttf");
 
-        title.setTypeface(tfRegular);
-        content.setTypeface(tfLight);
-        copyright.setTypeface(tfRegular);
-        start_btn.setTypeface(tfRegular);
+
+        title.setTypeface(fonts.tfRegular);
+        content.setTypeface(fonts.tfLight);
+        copyright.setTypeface(fonts.tfLight);
+        start_btn.setTypeface(fonts.tfRegular);
     }
 
 }

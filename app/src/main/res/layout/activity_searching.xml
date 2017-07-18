@@ -12,7 +12,7 @@
         android:id="@+id/searching_img"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_splash_icon" />
+        android:src="@drawable/ic_question_icon" />
 
     <TextView
         android:id="@+id/searching_text"

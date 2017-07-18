@@ -10,13 +10,6 @@
         android:layout_width="@dimen/blank_margin"
         android:layout_height="90dp" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/category_img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginEnd="@dimen/blank_margin"
-        android:src="@drawable/bg_gradient" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -31,16 +24,18 @@
             android:layout_marginBottom="3dp">
 
             <TextView
-                android:id="@+id/category_korTitle"
+                android:id="@+id/restaurant_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                android:maxLines="1"
+                android:maxWidth="210dp"
                 android:text="마카나이"
                 android:textColor="#222"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/category_engTitle"
+                android:id="@+id/restaurant_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|start"
@@ -50,23 +45,47 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/category_content"
-            android:layout_width="wrap_content"
+            android:id="@+id/restaurant_address"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="오늘따라 집밥이 그리울 때,\n밖에서 먹는 우리집의 맛"
+            android:text="서울시 용산구 청파로 45길 11"
             android:textSize="12sp" />
 
+
+        <TextView
+            android:id="@+id/restaurant_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="02-711-2016"
+            android:textSize="12sp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left">
+
+            <RatingBar
+                android:id="@+id/restaurant_ratingBar"
+                style="@style/starRatingBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:isIndicator="true"
+                android:max="5"
+                android:numStars="5"
+                android:rating="3.5"
+                android:stepSize="0.3" />
+        </LinearLayout>
     </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/category_checkbox"
-        android:layout_width="30dp"
-        android:layout_height="75dp"
+    <ImageButton
+        android:id="@+id/restaurant_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="center"
-        android:layout_weight="1.5"
-        android:button="@drawable/btn_category"
+        android:background="@android:color/transparent"
         android:clickable="false"
-        android:scaleX="0.3"
-        android:scaleY="0.3" />
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_chevron_right_black_24dp" />
 </LinearLayout>
