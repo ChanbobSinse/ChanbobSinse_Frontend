@@ -62,7 +62,7 @@ public class RecommendActivity extends AppCompatActivity {
         pref = getSharedPreferences("value", MODE_PRIVATE);
         pref_edit = pref.edit();
 
-        Intent intent = new Intent(RecommendActivity.this, SearchingActivity.class);
+        final Intent intent = new Intent(RecommendActivity.this, SearchingActivity.class);
         intent.addFlags(FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
 
@@ -107,8 +107,18 @@ public class RecommendActivity extends AppCompatActivity {
         });
         selectedRecyclerView.setAdapter(categoryRecyclerViewAdapter);
 
+        restaurantInfos.add(new RestaurantInfo("마카나이", "Japanese Food", "서울시 용산구 청파로 45길 11", "02-711-2016", 4.0f));
         restaurantRecyclerViewAdapter = new RestaurantRecyclerViewAdapter(restaurantInfos, this);
         restaurantRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        restaurantRecyclerViewAdapter.setOnItemClick(new RestaurantRecyclerViewAdapter.onItemClick() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent1 = new Intent(RecommendActivity.this, SelectActivity.class);
+                intent1.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
+                intent1.putExtra("restaurantInfo", restaurantInfos.get(position));
+                startActivity(intent1);
+            }
+        });
         restaurantRecyclerView.setAdapter(restaurantRecyclerViewAdapter);
 
         if (restaurantInfos.size() == 0) {

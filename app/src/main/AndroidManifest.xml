@@ -21,7 +21,9 @@
         <activity android:name=".Activity.Question1Activity" />
         <activity android:name=".Activity.Question2Activity" />
         <activity android:name=".Activity.SearchingActivity" />
-        <activity android:name=".Activity.RecommendActivity"/>
+        <activity android:name=".Activity.RecommendActivity" />
+        <activity android:name=".Activity.SelectActivity" />
+        <activity android:name=".Activity.CompleteActivity"></activity>
     </application>
 
 </manifest>

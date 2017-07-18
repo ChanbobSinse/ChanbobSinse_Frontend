@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.oechyeochangmen.chanbapsinse.Adapter.CategoryRecyclerViewAdpater;
+import com.oechyeochangmen.chanbapsinse.Adapter.CategoryRecyclerViewAdapater;
 import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.Model.Category;
 import com.oechyeochangmen.chanbapsinse.R;
@@ -33,7 +33,7 @@ public class Question1Activity extends AppCompatActivity {
     TextView question;
     TextView content;
     RecyclerView listView;
-    CategoryRecyclerViewAdpater recyclerViewAdpater;
+    CategoryRecyclerViewAdapater recyclerViewAdpater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class Question1Activity extends AppCompatActivity {
         content = (TextView) findViewById(R.id.question1_content);
         listView = (RecyclerView) findViewById(R.id.question1_recyclerView);
         initItems();
-        recyclerViewAdpater = new CategoryRecyclerViewAdpater(this, items);
+        recyclerViewAdpater = new CategoryRecyclerViewAdapater(this, items);
         listView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         listView.setAdapter(recyclerViewAdpater);
 

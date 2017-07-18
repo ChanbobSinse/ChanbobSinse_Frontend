@@ -1,9 +1,7 @@
 package com.oechyeochangmen.chanbapsinse.Adapter;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,25 +22,25 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by eka on 2017. 7. 17..
  */
 
-public class CategoryRecyclerViewAdpater extends RecyclerView.Adapter<CategoryRecyclerViewAdpater.ViewHolder> {
+public class CategoryRecyclerViewAdapater extends RecyclerView.Adapter<CategoryRecyclerViewAdapater.ViewHolder> {
     Context context;
     ArrayList<Category> items = new ArrayList<>();
     Fonts fonts;
 
-    public CategoryRecyclerViewAdpater(Context context, ArrayList<Category> items) {
+    public CategoryRecyclerViewAdapater(Context context, ArrayList<Category> items) {
         this.context = context;
         this.items = items;
         fonts = new Fonts(context);
     }
 
     @Override
-    public CategoryRecyclerViewAdpater.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CategoryRecyclerViewAdapater.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.list_category, null);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final CategoryRecyclerViewAdpater.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final CategoryRecyclerViewAdapater.ViewHolder holder, final int position) {
 
 
         holder.korTitle.setTypeface(fonts.tfRegular);

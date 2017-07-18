@@ -11,4 +11,8 @@
     <style name="starRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/ratingbar_star</item>
     </style>
+
+    <style name="starRatingBar.Small" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_small_star</item>
+    </style>
 </resources>
