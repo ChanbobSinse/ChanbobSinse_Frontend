@@ -41,29 +41,34 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/question2_question"
+                    android:id="@+id/complete_topText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Question2"
+                    android:text="당신이 선택한 음식을\n보여드렸습니다."
                     android:textColor="#222222"
-                    android:textSize="40sp" />
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/question2_content"
+                    android:id="@+id/complete_bottomText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="가격대를 선택해주세요.\n오차범위도 설정할 수 있슴니다."
+                    android:layout_marginTop="3dp"
+                    android:text="맛있게 드세요!"
                     android:textColor="#222222"
-                    android:textSize="12sp" />
+                    android:textSize="24sp" />
+
+
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
+
     <LinearLayout
-        android:weightSum="7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="7"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:weightSum="7">
+
         <TextView
             android:id="@+id/complete_restaurant"
             android:layout_width="match_parent"
@@ -75,10 +80,11 @@
             android:text="음식점"
             android:textColor="#222"
             android:textSize="19sp" />
+
         <LinearLayout
-            android:layout_weight="1.5"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1.6">
 
 
             <android.support.v4.widget.Space
@@ -94,12 +100,13 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:layout_marginTop="7dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp">
 
                     <TextView
-                        android:id="@+id/restaurant_name"
+                        android:id="@+id/complete_restaurant_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
@@ -110,7 +117,7 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/restaurant_category"
+                        android:id="@+id/complete_restaurant_category"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|start"
@@ -120,7 +127,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/restaurant_address"
+                    android:id="@+id/complete_restaurant_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="서울시 용산구 청파로 45길 11"
@@ -128,7 +135,7 @@
 
 
                 <TextView
-                    android:id="@+id/restaurant_number"
+                    android:id="@+id/complete_restaurant_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -142,7 +149,7 @@
                     android:layout_gravity="left">
 
                     <RatingBar
-                        android:id="@+id/restaurant_ratingBar"
+                        android:id="@+id/complete_restaurant_ratingBar"
                         style="@style/starRatingBar"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
@@ -155,6 +162,7 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
         <TextView
             android:id="@+id/complete_menu"
             android:layout_width="match_parent"
@@ -166,7 +174,14 @@
             android:text="메뉴와 가격"
             android:textColor="#222"
             android:textSize="19sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/complete_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.41" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -176,7 +191,7 @@
 
 
         <Button
-            android:id="@+id/question2_btn_prev"
+            android:id="@+id/complete_btn_prev"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
@@ -191,7 +206,7 @@
 
 
         <Button
-            android:id="@+id/question2_btn_next"
+            android:id="@+id/complete_btn_complete"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
@@ -200,7 +215,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:background="@drawable/btn_fill"
-            android:text="다음"
+            android:text="완료"
             android:textColor="@color/colorBaseBlue"
             android:textSize="20sp" />
     </LinearLayout>

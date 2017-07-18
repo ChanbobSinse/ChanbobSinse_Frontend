@@ -1,7 +1,6 @@
 package com.oechyeochangmen.chanbapsinse.Activity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,7 +17,6 @@ import com.oechyeochangmen.chanbapsinse.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
 

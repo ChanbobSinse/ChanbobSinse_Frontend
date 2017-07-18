@@ -64,6 +64,7 @@ public class SelectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SelectActivity.this, CompleteActivity.class);
                 intent.putExtra("restaurantInfo", restaurantInfo);
+                intent.putParcelableArrayListExtra("menuInfos", menuInfos);
                 startActivity(intent);
             }
         });

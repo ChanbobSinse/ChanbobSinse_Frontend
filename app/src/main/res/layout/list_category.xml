@@ -10,13 +10,13 @@
         android:layout_width="@dimen/blank_margin"
         android:layout_height="90dp" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/category_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginEnd="@dimen/blank_margin"
-        android:src="@drawable/bg_gradient" />
+        android:src="@drawable/category_koreanfood" />
 
     <LinearLayout
         android:layout_width="0dp"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,7 +16,6 @@ import com.oechyeochangmen.chanbapsinse.R;
 
 import java.util.ArrayList;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -73,7 +73,7 @@ public class CategoryRecyclerViewAdapater extends RecyclerView.Adapter<CategoryR
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        CircleImageView imageView;
+        ImageView imageView;
         TextView korTitle;
         TextView engTitle;
         TextView content;
@@ -83,7 +83,7 @@ public class CategoryRecyclerViewAdapater extends RecyclerView.Adapter<CategoryR
             super(itemView);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             itemView.setLayoutParams(params);
-            imageView = (CircleImageView) itemView.findViewById(R.id.category_img);
+            imageView = (ImageView) itemView.findViewById(R.id.category_img);
             korTitle = (TextView) itemView.findViewById(R.id.category_korTitle);
             engTitle = (TextView) itemView.findViewById(R.id.category_engTitle);
             content = (TextView) itemView.findViewById(R.id.category_content);
