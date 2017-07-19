@@ -25,10 +25,10 @@ public class NotificationService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_notification);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        Intent intent1 = new Intent(getBaseContext(),DialogActivity.class);
-        remoteViews.setImageViewResource(R.layout.layout_notification,R.drawable.bg_splash);
-        remoteViews.setTextViewText(R.id.notification_title,"찬밥신세");
-        remoteViews.setTextViewText(R.id.notification_content,"식사는 맛있게 하셨나요?\n음식점의 별점을 기록해주시는 것은 어떨까요?");
+        Intent intent1 = new Intent(getBaseContext(), DialogActivity.class);
+        remoteViews.setImageViewResource(R.layout.layout_notification, R.drawable.bg_splash);
+        remoteViews.setTextViewText(R.id.notification_title, "찬밥신세");
+        remoteViews.setTextViewText(R.id.notification_content, "식사는 맛있게 하셨나요?\n음식점의 별점을 기록해주시는 것은 어떨까요?");
         Notification notification = new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
                 .setContentTitle("찬밥신세")
