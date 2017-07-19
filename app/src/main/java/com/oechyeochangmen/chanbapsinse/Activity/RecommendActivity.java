@@ -97,7 +97,7 @@ public class RecommendActivity extends AppCompatActivity {
         Long min = pref.getLong("min", 0);
         Long max = pref.getLong("max", 0);
         Long error = pref.getLong("error", 0);
-        String string = format.format(min) + "₩ ~ " + format.format(max) + " ₩\n± " + format.format(error);
+        String string = format.format(min) + " ₩ ~ " + format.format(max) + " ₩\n± " + format.format(error);
 
         range.setText(string);
 

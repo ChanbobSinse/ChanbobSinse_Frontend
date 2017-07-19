@@ -38,6 +38,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.CustomAppTheme);
         setContentView(R.layout.activity_start);
 
         fonts = new Fonts(this);

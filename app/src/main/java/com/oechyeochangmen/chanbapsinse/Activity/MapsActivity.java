@@ -30,6 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         gpsInfo = new GpsInfo(this);
+        gpsInfo.showSettingsAlert();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -49,7 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             location = gpsInfo.getLocation();
             LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 16));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 13));
         }
     }
 

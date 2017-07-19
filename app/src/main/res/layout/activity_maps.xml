@@ -4,6 +4,16 @@
     android:orientation="vertical"
     android:weightSum="10">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="위치 설정"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp" />
+
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -11,11 +21,49 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
+        android:layout_weight="8"
         tools:context="study.gps.MapsActivity" />
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="@color/colorBaseBlue"
+        android:weightSum="10">
+
+        <android.support.v4.widget.Space
+            android:layout_width="@dimen/blank_margin"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/recommend_address"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="8.5"
+            android:background="@drawable/btn_transparent_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:textColor="@color/colorWhite" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="@dimen/blank_margin"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/recommend_map"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1.5"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_recommend_location" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="@dimen/blank_margin"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </LinearLayout>

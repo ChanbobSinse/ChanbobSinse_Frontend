@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:weightSum="9"
+    tools:context="com.oechyeochangmen.chanbapsinse.DialogActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@color/colorBaseBlue"
+        android:paddingStart="7dp"
+        android:weightSum="10">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:src="@drawable/ic_popup" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="8"
+            android:paddingLeft="30dp"
+            android:text="별점 남기기"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:weightSum="6">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="식사는 맛있게 하셨나요?\n음식점 별점을 기록해주세요"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <RatingBar
+                android:id="@+id/dialog_ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:max="5"
+                android:numStars="5"
+                android:stepSize="0.5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:weightSum="5">
+
+            <Button
+                android:id="@+id/dialog_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="취소"
+                android:textColor="@color/colorBaseBlue" />
+
+            <Button
+                android:id="@+id/dialog_ok"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="확인"
+                android:textColor="@color/colorBaseBlue" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
