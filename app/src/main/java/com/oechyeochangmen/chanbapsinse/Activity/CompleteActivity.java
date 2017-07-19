@@ -1,20 +1,27 @@
 package com.oechyeochangmen.chanbapsinse.Activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.oechyeochangmen.chanbapsinse.Adapter.Menu2RecyclerViewAdapter;
 import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.Model.MenuInfo;
 import com.oechyeochangmen.chanbapsinse.Model.RestaurantInfo;
+import com.oechyeochangmen.chanbapsinse.NotificationService;
 import com.oechyeochangmen.chanbapsinse.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CompleteActivity extends AppCompatActivity {
     Fonts fonts;
@@ -67,5 +74,16 @@ public class CompleteActivity extends AppCompatActivity {
         restaurant_category.setTypeface(fonts.tfLight);
         restaurant_address.setTypeface(fonts.tfLight);
         restaurant_number.setTypeface(fonts.tfLight);
+
+        complete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CompleteActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CompleteActivity.this, NotificationService.class);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                PendingIntent pendingIntent = PendingIntent.getService(CompleteActivity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTime().getTime() + 1000, pendingIntent);
+            }
+        });
     }
 }
