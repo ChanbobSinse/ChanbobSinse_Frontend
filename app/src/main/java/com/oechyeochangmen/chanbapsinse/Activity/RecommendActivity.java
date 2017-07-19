@@ -74,7 +74,8 @@ public class RecommendActivity extends AppCompatActivity {
         final Intent intent = new Intent(RecommendActivity.this, SearchingActivity.class);
         intent.addFlags(FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
-
+        ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission_group.LOCATION);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_FINE_LOCATION);
         setContentView(R.layout.activity_recommend);
 
         container = (LinearLayout) findViewById(R.id.recommend_container);

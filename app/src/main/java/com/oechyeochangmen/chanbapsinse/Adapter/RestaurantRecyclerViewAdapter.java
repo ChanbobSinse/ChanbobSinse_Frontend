@@ -48,6 +48,11 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
         holder.number.setTypeface(fonts.tfLight);
         holder.category.setTypeface(fonts.tfLight);
 
+        holder.name.setText(item.getName());
+        holder.address.setText(item.getAddress());
+        holder.number.setText(item.getNumber());
+        holder.category.setText(item.getCategory());
+
         holder.ratingBar.setRating(item.getRating());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

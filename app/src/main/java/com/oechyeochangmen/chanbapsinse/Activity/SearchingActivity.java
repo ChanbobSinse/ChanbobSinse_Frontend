@@ -22,7 +22,7 @@ public class SearchingActivity extends AppCompatActivity {
     Handler handler = new Handler();
     Timer timer = new Timer();
     int Term = 125;
-
+    int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +50,8 @@ public class SearchingActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-
+                        count++;
+                        if (count>=20)
                         if (isUp) {
                             if (textView.getAlpha() - (float) 0.1 <= 0) {
                                 isUp = false;
