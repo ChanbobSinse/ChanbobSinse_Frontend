@@ -78,7 +78,6 @@ public class CompleteActivity extends AppCompatActivity {
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CompleteActivity.this, "clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CompleteActivity.this, NotificationService.class);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 PendingIntent pendingIntent = PendingIntent.getService(CompleteActivity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);

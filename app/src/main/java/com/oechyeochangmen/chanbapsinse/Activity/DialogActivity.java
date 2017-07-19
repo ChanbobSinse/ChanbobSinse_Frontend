@@ -22,6 +22,10 @@ public class DialogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dialog);
         fonts = new Fonts(this);
 
+        title = (TextView) findViewById(R.id.dialog_title);
+        content = (TextView) findViewById(R.id.dialog_content);
+        ok = (Button) findViewById(R.id.dialog_ok);
+        no = (Button) findViewById(R.id.dialog_no);
         title.setTypeface(fonts.tfRegular);
         content.setTypeface(fonts.tfRegular);
         ok.setTypeface(fonts.tfRegular);
