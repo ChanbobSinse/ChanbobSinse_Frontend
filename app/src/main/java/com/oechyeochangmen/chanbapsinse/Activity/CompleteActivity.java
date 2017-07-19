@@ -83,7 +83,7 @@ public class CompleteActivity extends AppCompatActivity {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 PendingIntent pendingIntent = PendingIntent.getService(CompleteActivity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTime().getTime() + 1000, pendingIntent);
-                finish();
+                finishAffinity();
             }
         });
     }

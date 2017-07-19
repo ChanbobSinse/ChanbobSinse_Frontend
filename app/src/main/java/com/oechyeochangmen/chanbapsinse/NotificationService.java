@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
+import com.oechyeochangmen.chanbapsinse.Activity.DialogActivity;
+
 /**
  * Created by eka on 2017. 7. 19..
  */

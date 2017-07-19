@@ -142,6 +142,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="8.5"
                     android:background="@drawable/btn_transparent_blue"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="서울시 용산구 청파로"
                     android:textColor="@color/colorBaseBlue" />
 
                 <android.support.v4.widget.Space

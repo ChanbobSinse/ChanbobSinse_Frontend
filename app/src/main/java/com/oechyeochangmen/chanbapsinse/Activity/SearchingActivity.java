@@ -51,7 +51,10 @@ public class SearchingActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         count++;
-                        if (count>=20)
+                        if (count>=20){
+                            timer.cancel();
+                            finish();
+                        }
                         if (isUp) {
                             if (textView.getAlpha() - (float) 0.1 <= 0) {
                                 isUp = false;
