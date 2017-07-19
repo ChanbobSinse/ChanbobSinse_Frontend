@@ -18,10 +18,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.oechyeochangmen.chanbapsinse.Adapter.RestaurantRecyclerViewAdapter;
 import com.oechyeochangmen.chanbapsinse.Adapter.SelectedCategoryRecyclerViewAdapter;
 import com.oechyeochangmen.chanbapsinse.Fonts;
+import com.oechyeochangmen.chanbapsinse.GpsInfo;
 import com.oechyeochangmen.chanbapsinse.Model.Category;
 import com.oechyeochangmen.chanbapsinse.Model.RestaurantInfo;
 import com.oechyeochangmen.chanbapsinse.R;
@@ -35,6 +37,7 @@ import java.util.Locale;
 import static android.content.Intent.FLAG_ACTIVITY_NO_HISTORY;
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
+import static com.oechyeochangmen.chanbapsinse.Activity.MapsActivity.MY_FINE_LOCATION;
 
 public class RecommendActivity extends AppCompatActivity {
 
@@ -150,7 +153,14 @@ public class RecommendActivity extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (ActivityCompat.checkSelfPermission(RecommendActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(RecommendActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(RecommendActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_FINE_LOCATION);
 
+                }
+
+                Intent intent1 = new Intent(RecommendActivity.this, MapsActivity.class);
+                startActivity(intent1);
             }
         });
     }
@@ -163,5 +173,22 @@ public class RecommendActivity extends AppCompatActivity {
         intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_FINE_LOCATION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    return;
+                } else {
+                    Toast.makeText(this, "사용 권한이 없습니다.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
+                break;
+            default:
+                finish();
+        }
     }
 }

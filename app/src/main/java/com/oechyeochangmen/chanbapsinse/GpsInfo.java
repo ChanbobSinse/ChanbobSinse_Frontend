@@ -20,7 +20,7 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 
 public class GpsInfo extends Service implements LocationListener {
-    public static final int  MY_PERMISSION_USE_GPS = 100;
+    public static final int MY_PERMISSION_USE_GPS = 100;
     private final Context mContext;
 
     // 현재 GPS 사용유무
@@ -50,10 +50,6 @@ public class GpsInfo extends Service implements LocationListener {
     }
 
     public Location getLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-             showSettingsAlert();
-            return null;
-        }
         try {
             locationManager = (LocationManager) mContext
                     .getSystemService(LOCATION_SERVICE);
