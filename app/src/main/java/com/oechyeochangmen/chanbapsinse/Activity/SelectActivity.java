@@ -20,8 +20,6 @@ import com.oechyeochangmen.chanbapsinse.R;
 import java.util.ArrayList;
 
 public class SelectActivity extends AppCompatActivity {
-    SharedPreferences pref;
-    SharedPreferences.Editor pref_edit;
 
     Fonts fonts;
 
@@ -81,5 +79,12 @@ public class SelectActivity extends AppCompatActivity {
         restaurant_category.setTypeface(fonts.tfRegular);
         restaurant_address.setTypeface(fonts.tfRegular);
         restaurant_number.setTypeface(fonts.tfRegular);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(SelectActivity.this,RecommendActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
     }
 }

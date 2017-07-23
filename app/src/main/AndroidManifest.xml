@@ -39,7 +39,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Activity.DialogActivity"></activity>
+        <activity
+            android:name=".Activity.DialogActivity"
+            android:theme="@style/CustomDialog" />
     </application>
 
 </manifest>

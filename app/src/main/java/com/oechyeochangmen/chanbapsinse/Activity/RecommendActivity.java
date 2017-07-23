@@ -41,8 +41,6 @@ import static com.oechyeochangmen.chanbapsinse.Activity.MapsActivity.MY_FINE_LOC
 
 public class RecommendActivity extends AppCompatActivity {
 
-    SharedPreferences pref;
-    SharedPreferences.Editor pref_edit;
 
     ArrayList<RestaurantInfo> restaurantInfos = new ArrayList<>();
     ArrayList<Category> categories = new ArrayList<>();
@@ -68,14 +66,9 @@ public class RecommendActivity extends AppCompatActivity {
 
         fonts = new Fonts(this);
 
-        pref = getSharedPreferences("value", MODE_PRIVATE);
-        pref_edit = pref.edit();
-
         final Intent intent = new Intent(RecommendActivity.this, SearchingActivity.class);
         intent.addFlags(FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
-        ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission_group.LOCATION);
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_FINE_LOCATION);
         setContentView(R.layout.activity_recommend);
 
         container = (LinearLayout) findViewById(R.id.recommend_container);
@@ -95,9 +88,9 @@ public class RecommendActivity extends AppCompatActivity {
         DecimalFormatSymbols symbols = format.getDecimalFormatSymbols();
         symbols.setDecimalSeparator(',');
         format.setDecimalFormatSymbols(symbols);
-        Long min = pref.getLong("min", 0);
-        Long max = pref.getLong("max", 0);
-        Long error = pref.getLong("error", 0);
+        Long min = getIntent().getLongExtra("min", 0);
+        Long max = getIntent().getLongExtra("max", 0);
+        Long error = getIntent().getLongExtra("error", 0);
         String string = format.format(min) + " ₩ ~ " + format.format(max) + " ₩\n± " + format.format(error);
 
         range.setText(string);
@@ -154,12 +147,6 @@ public class RecommendActivity extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ActivityCompat.checkSelfPermission(RecommendActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                        && ActivityCompat.checkSelfPermission(RecommendActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(RecommendActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_FINE_LOCATION);
-
-                }
-
                 Intent intent1 = new Intent(RecommendActivity.this, MapsActivity.class);
                 startActivity(intent1);
             }
@@ -168,28 +155,9 @@ public class RecommendActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         Intent intent = new Intent(RecommendActivity.this, Question2Activity.class);
-        intent.addFlags(FLAG_ACTIVITY_SINGLE_TOP);
         intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case MY_FINE_LOCATION:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    return;
-                } else {
-                    Toast.makeText(this, "사용 권한이 없습니다.", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
-                break;
-            default:
-                finish();
-        }
     }
 }

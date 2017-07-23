@@ -40,7 +40,9 @@ public class SelectedCategoryRecyclerViewAdapter extends RecyclerView.Adapter<Se
         Category item = items.get(position);
 
         holder.textView.setTypeface(fonts.tfLight);
-        if (item.isChecked()) {
+        if (item.getKorTitle().equals("보쌈/족발")) {
+            holder.textView.setText("#보족");
+        } else {
             String content = "#" + item.getKorTitle();
             holder.textView.setText(content);
         }

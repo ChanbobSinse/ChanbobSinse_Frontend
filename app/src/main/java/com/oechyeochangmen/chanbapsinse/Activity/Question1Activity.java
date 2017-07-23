@@ -2,15 +2,19 @@ package com.oechyeochangmen.chanbapsinse.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.oechyeochangmen.chanbapsinse.Adapter.CategoryRecyclerViewAdapater;
 import com.oechyeochangmen.chanbapsinse.Fonts;
 import com.oechyeochangmen.chanbapsinse.Model.Category;
@@ -24,9 +28,6 @@ public class Question1Activity extends AppCompatActivity {
 
     public static ArrayList<Category> items = new ArrayList<>();
 
-    SharedPreferences pref;
-    SharedPreferences.Editor pref_edit;
-
     Fonts fonts;
 
     Button next_btn;
@@ -35,21 +36,21 @@ public class Question1Activity extends AppCompatActivity {
     RecyclerView listView;
     CategoryRecyclerViewAdapater recyclerViewAdpater;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question1);
 
+        if (items.isEmpty()){
+            initItems();
+        }
         fonts = new Fonts(this);
-
-        pref = getSharedPreferences("value", MODE_PRIVATE);
-        pref_edit = pref.edit();
 
         next_btn = (Button) findViewById(R.id.question1_btn_next);
         question = (TextView) findViewById(R.id.question1_question);
         content = (TextView) findViewById(R.id.question1_content);
         listView = (RecyclerView) findViewById(R.id.question1_recyclerView);
-        initItems();
         recyclerViewAdpater = new CategoryRecyclerViewAdapater(this, items);
         listView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         listView.setAdapter(recyclerViewAdpater);
@@ -75,8 +76,6 @@ public class Question1Activity extends AppCompatActivity {
                 Intent intent = new Intent(Question1Activity.this, Question2Activity.class);
                 intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-                count = 0;
-
             }
         });
         question.setTypeface(fonts.tfBold);
@@ -105,13 +104,12 @@ public class Question1Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         finishAffinity();
     }
 
     @Override
     protected void onDestroy() {
+        items.clear();
         super.onDestroy();
-        pref_edit.clear().apply();
     }
 }

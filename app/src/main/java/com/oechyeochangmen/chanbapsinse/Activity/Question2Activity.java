@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,9 +28,6 @@ public class Question2Activity extends AppCompatActivity {
 
     Fonts fonts;
 
-    SharedPreferences pref;
-    SharedPreferences.Editor pref_edit;
-
     EditText minMoney;
     EditText maxMoney;
     EditText errorMoney;
@@ -48,9 +46,6 @@ public class Question2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_question2);
 
         fonts = new Fonts(this);
-
-        pref = getSharedPreferences("value", MODE_PRIVATE);
-        pref_edit = pref.edit();
 
         minMoney = (EditText) findViewById(R.id.question2_minmoney);
         maxMoney = (EditText) findViewById(R.id.question2_maxmoney);
@@ -71,10 +66,6 @@ public class Question2Activity extends AppCompatActivity {
         prev_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pref_edit.putLong("min", Long.parseLong(minMoney.getText().toString().replaceAll(",", "")));
-                pref_edit.putLong("max", Long.parseLong(maxMoney.getText().toString().replaceAll(",", "")));
-                pref_edit.putLong("error", Long.parseLong(errorMoney.getText().toString().replaceAll(",", "")));
-                pref_edit.apply();
                 onBackPressed();
             }
         });
@@ -82,22 +73,20 @@ public class Question2Activity extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String min, max;
+                String min, max, error;
 
                 min = minMoney.getText().toString().replaceAll(",", "");
                 max = maxMoney.getText().toString().replaceAll(",", "");
+                error = errorMoney.getText().toString().replaceAll(",", "");
                 if (Long.parseLong(min) > Long.parseLong(max)) {
                     Toast.makeText(Question2Activity.this, "최솟값이 최댓값보다 큽니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                pref_edit.putLong("min", Long.parseLong(minMoney.getText().toString().replaceAll(",", "")));
-                pref_edit.putLong("max", Long.parseLong(maxMoney.getText().toString().replaceAll(",", "")));
-                pref_edit.putLong("error", Long.parseLong(errorMoney.getText().toString().replaceAll(",", "")));
-                pref_edit.apply();
-
                 Intent intent = new Intent(Question2Activity.this, RecommendActivity.class);
-                intent.addFlags(FLAG_ACTIVITY_SINGLE_TOP);
+                intent.getLongExtra("min", Long.parseLong(min));
+                intent.getLongExtra("max", Long.parseLong(max));
+                intent.getLongExtra("error", Long.parseLong(error));
                 intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }
@@ -191,15 +180,6 @@ public class Question2Activity extends AppCompatActivity {
 
             }
         });
-
-        Long min = pref.getLong("min", 0);
-        Long max = pref.getLong("max", 0);
-        Long error = pref.getLong("error", 0);
-        minMoney.setText("" + min);
-        maxMoney.setText("" + max);
-        errorMoney.setText("" + error);
-
-
         question.setTypeface(fonts.tfBold);
         content.setTypeface(fonts.tfRegular);
         won1.setTypeface(fonts.tfRegular);
@@ -218,7 +198,6 @@ public class Question2Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         Intent intent = new Intent(Question2Activity.this, Question1Activity.class);
         intent.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
@@ -241,3 +220,4 @@ public class Question2Activity extends AppCompatActivity {
 
 
 }
+

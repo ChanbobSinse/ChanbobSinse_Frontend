@@ -6,7 +6,7 @@
     android:layout_height="210dp"
     android:background="#fff"
     android:orientation="vertical"
-    android:weightSum="9"
+    android:weightSum="10"
     tools:context="com.oechyeochangmen.chanbapsinse.Activity.DialogActivity">
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:background="@color/colorBaseBlue"
-        android:paddingStart="7dp"
+        android:paddingLeft="@dimen/blank_margin"
         android:weightSum="10">
 
         <ImageView
@@ -40,7 +40,7 @@
         android:layout_height="0dp"
         android:layout_weight="6"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
+        android:paddingStart="@dimen/blank_margin"
         android:paddingTop="10dp"
         android:weightSum="6">
 
@@ -60,9 +60,10 @@
             android:gravity="center">
 
             <RatingBar
+                style="@style/starRatingBar.Regular"
                 android:id="@+id/dialog_ratingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="58px"
                 android:max="5"
                 android:numStars="5"
                 android:stepSize="0.5" />

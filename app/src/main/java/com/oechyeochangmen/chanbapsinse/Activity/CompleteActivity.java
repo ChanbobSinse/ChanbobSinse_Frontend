@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.oechyeochangmen.chanbapsinse.Adapter.Menu2RecyclerViewAdapter;
 import com.oechyeochangmen.chanbapsinse.Fonts;
@@ -75,6 +74,12 @@ public class CompleteActivity extends AppCompatActivity {
         restaurant_address.setTypeface(fonts.tfLight);
         restaurant_number.setTypeface(fonts.tfLight);
 
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,5 +90,12 @@ public class CompleteActivity extends AppCompatActivity {
                 finishAffinity();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CompleteActivity.this, SelectActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
     }
 }

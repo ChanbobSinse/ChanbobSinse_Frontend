@@ -20,4 +20,14 @@
     <style name="starRatingBar.Small" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/ratingbar_small_star</item>
     </style>
+
+    <style name="starRatingBar.Regular" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_medium_star</item>
+        <item name="android:maxHeight">58px</item>
+        <item name="android:minHeight">58px</item>
+    </style>
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
