@@ -60,10 +60,10 @@
             android:gravity="center">
 
             <RatingBar
-                style="@style/starRatingBar.Regular"
+                style="@style/starRatingBar.Small"
                 android:id="@+id/dialog_ratingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="58px"
+                android:layout_height="32dp"
                 android:max="5"
                 android:numStars="5"
                 android:stepSize="0.5" />
